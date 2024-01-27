@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <h2>Список компьютеров</h2>
+  <div class="computer-list">
+    {% for comp in computer %}
+      <div class="computer-item">
+        <h3>{{ comp.title }}</h3>
+        <p>{{ comp.info }}</p>
+        <p>Цена: ${{ comp.price }}</p>
+        <img src="{{ comp.image.url }}" alt="{{ comp.title }}">
+      </div>
+    {% endfor %}
+  </div>
+
+  <div class="pagination">
+    <span class="step-links">
+      {% if computer.has_previous %}
+        <a href="?page=1">&laquo; первая</a>
+        <a href="?page={{ computer.previous_page_number }}">предыдущая</a>
+      {% endif %}
+
+      <span class="current">
+        Страница {{ computer.number }} из {{ computer.paginator.num_pages }}.
+      </span>
+
+      {% if computer.has_next %}
+        <a href="?page={{ computer.next_page_number }}">следующая</a>
+        <a href="?page={{ computer.paginator.num_pages }}">последняя &raquo;</a>
+      {% endif %}
+    </span>
+  </div>
+</body>
+</html>
