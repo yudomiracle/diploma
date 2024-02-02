@@ -9,8 +9,9 @@ urlpatterns = [
     path('update/<int:pk>', views.ComputerUpdate.as_view(), name='CompUpdate'),
     path('delete/<int:pk>', views.ComputerDelete.as_view(), name='CompDelete'),
 
-    path('orders/', views.order_list, name='order_list'),
-    path('orders/<int:pk>/', views.order_detail, name='order_detail'),
-    path('orders/create/', views.create_order, name='create_order'),
+    path('orders/', views.OrderList.as_view(), name='order_list'),
+    path('orders/<int:pk>/', views.OrderDetail.as_view(), name='order_detail'),
+    path('orders/create/', views.OrderCreate.as_view(), name='order_create'),
+    path('orders/delete/<int:pk>', views.OrderDelete.as_view, name='order_delete')
 ]
 
