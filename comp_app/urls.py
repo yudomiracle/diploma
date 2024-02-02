@@ -8,7 +8,9 @@ urlpatterns = [
     path('create/', views.ComputerCreate.as_view(), name='CompCreate'),
     path('update/<int:pk>', views.ComputerUpdate.as_view(), name='CompUpdate'),
     path('delete/<int:pk>', views.ComputerDelete.as_view(), name='CompDelete'),
+
+    path('orders/', views.order_list, name='order_list'),
+    path('orders/<int:pk>/', views.order_detail, name='order_detail'),
+    path('orders/create/', views.create_order, name='create_order'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

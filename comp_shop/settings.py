@@ -40,7 +40,13 @@ INSTALLED_APPS = [
 
     #localapps
     'comp_app',
+    'drf_comp',
+
+    #installedapps
+    'rest_framework'
 ]
+
+AUTH_USER_MODEL = 'comp_app.CustomUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -127,3 +133,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
