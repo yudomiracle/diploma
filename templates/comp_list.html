@@ -10,10 +10,14 @@
   <div class="card-body">
   <h5 class="card-title">{{ comp.title | capitalize_first }}</h5>
   <p class="card-text">{{ comp.info }}. Цена: {{ comp.price }}<br></p>
-    <a href="{% url 'CompDetail' pk=comp.id %}" class="btn btn-primary">Перейти куда-нибудь</a>
+    <a href="{% url 'CompDetail' pk=comp.id %}" class="btn btn-primary">Узнать подробнее </a>
   </div>
   </div>
     {% endfor %}
+
+  {% if user.is_staff %}
+  <a href="{% url 'CompCreate' %}"> Добавить новый компьютер </a>
+  {% endif %}
 
   <div class="pagination">
     <span class="step-links">
