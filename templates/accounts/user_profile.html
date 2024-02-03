@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'navbar.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<h1> Ваш Профиль </h1>
+    <p>Username: {{ user.username }}</p>
+    <p>Email: {{ user.email }}</p>
+    <p>Phone Number: {{ user.phone_number }}</p>
+    <p>Shipping Address: {{ user.shipping_address }}</p>
+    <a href="{% url 'change_password' %}"> Поменять пароль </a><br>
+    <a href="{%url 'logout'%}"> Выйти из аккаунта </a>
+{% else %}
+    <a href="{% url 'user_login' %}">Вам нужно войти в сеть</a>
+{% endif %}
+{% endblock %}

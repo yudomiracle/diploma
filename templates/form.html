@@ -1,18 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'navbar.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
     {% if update_text %}
         <p>Вы {{ action }} запись {{ model }} с ключом {{ object.pk }}</p>
     {% endif %}
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% bootstrap_form form %}
         <button type="submit">Submit</button>
     </form>
-</body>
-</html>
+{% endblock %}
 

@@ -26,7 +26,7 @@ urlpatterns = [
     path('comps/', include('comp_app.urls')),
     path('', MainPage, name='main_page'),
     path('api/', include('drf_comp.urls')),
-    path('accounts/', include('accounts.urls')),
+    path('profile/', include('accounts.urls')),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,18 +1,19 @@
 {% extends 'navbar.html' %}
 {% load my_filters %}
+{% load bootstrap4 %}
 
 {% block content %}
   <h2>Список компьютеров</h2>
-  <div class="computer-list">
     {% for comp in page_obj %}
-      <div class="computer-item">
-        <h3>{{ comp.title | capitalize_first }}</h3>
-        <p>{{ comp.info }}</p>
-        <p>Цена: ${{ comp.price }}</p>
-        <img src="{{ comp.image.url }}" alt="{{ comp.title }}">
-      </div>
-    {% endfor %}
+      <div class="card" style="width: 18rem;">
+  <img src="{{ comp.image.url }}" class="card-img-top" alt="{{ comp.title }}">
+  <div class="card-body">
+  <h5 class="card-title">{{ comp.title | capitalize_first }}</h5>
+  <p class="card-text">{{ comp.info }}. Цена: {{ comp.price }}<br></p>
+    <a href="{% url 'CompDetail' pk=comp.id %}" class="btn btn-primary">Перейти куда-нибудь</a>
   </div>
+  </div>
+    {% endfor %}
 
   <div class="pagination">
     <span class="step-links">

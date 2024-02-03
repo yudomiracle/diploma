@@ -55,7 +55,7 @@ class OrderDetail(DetailView):
 
 class OrderList(ListView):
     model = Order
-    context_object_name = 'order'
+    context_object_name = 'orders'
     template_name = 'order_list.html'
     paginate_by = 10
 
@@ -87,6 +87,6 @@ class OrderCreate(CreateView):
 class OrderDelete(DeleteView):
     model = Order
     template_name = 'form.html'
-    success_url = '/orders/'
+    success_url = reverse_lazy('order_list')
 
 

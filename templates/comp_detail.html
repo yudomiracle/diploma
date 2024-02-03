@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'navbar.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+
 {{ computer.title }}<br>
 {{ computer.info }}<br>
 {{ computer.price }}<br>
 <img src="{{computer.image.url}}" alt="">
-</body>
-</html>
+
+{% endblock %}

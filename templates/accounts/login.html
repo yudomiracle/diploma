@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'navbar.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
 {% if user.is_authenticated %}
   <p>Вы уже вошли в систему</p>
 {% else %}
@@ -15,5 +12,4 @@
     <button type="submit" class="btn btn-primary">Войти в сеть</button>
   </form>
 {% endif %}
-</body>
-</html>
+{% endblock %}
