@@ -1,5 +1,5 @@
-def calculate_total_price(products, quantity):
+def calculate_total_price(products, quantities):
     total_price = 0
-    for product in products:
+    for product, quantity in zip(products, quantities):
         total_price += product.price * quantity
     return total_price

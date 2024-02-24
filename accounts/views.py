@@ -39,6 +39,7 @@ class UserLoginView(LoginView):
 def UserLogoutView(request):
     logout(request)
 
+
     return render(request, 'accounts/logout.html', {'message': 'Пользователь успешно вышел'})
 
 class UserPasswordChangeView(PasswordChangeView):

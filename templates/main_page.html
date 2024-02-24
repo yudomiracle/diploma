@@ -2,7 +2,67 @@
 {% load bootstrap4 %}
 
 {% block content %}
-
-<h1>COMP SHOP</h1>
-<p> Добро пожаловать в наш магазин компьютеров, здесь вы можете выбрать подходящий себе компьютер </p><br>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 text-center">
+            <h1 class="display-4 mb-4">Добро пожаловать в магазин компьютеров "Oasis"</h1>
+            <p class="lead mb-4">Здесь каждый найдет идеальное решение для своих потребностей!</p>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow-sm p-4 mb-4 bg-white rounded">
+                <h2 class="h4 mb-4">Наши преимущества</h2>
+                <ul class="list-unstyled">
+                    <li class="mb-3">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        <strong>Широкий ассортимент:</strong> Мы представляем разнообразие компьютеров от ведущих производителей.
+                    </li>
+                    <li class="mb-3">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        <strong>Качество и надежность:</strong> Мы тщательно отбираем каждый продукт, чтобы гарантировать его качество и долговечность.
+                    </li>
+                    <li class="mb-3">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        <strong>Профессиональные консультации:</strong> Наши эксперты всегда готовы помочь вам с выбором.
+                    </li>
+                    <li class="mb-3">
+                        <i class="bi bi-check-circle-fill text-success me-2"></i>
+                        <strong>Удобство покупки:</strong> Мы делаем покупку компьютера легкой и удобной.
+                    </li>
+                </ul>
+                <p>Не упустите возможность обновить свой компьютерный парк с нами! Перейдите к выбору компьютеров прямо сейчас и обретите новый уровень комфорта и эффективности в вашей работе и развлечениях.</p>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-3 text-center">
+            <div class="card shadow-sm mb-4 bg-white rounded">
+                <div class="card-body">
+                    <h3 class="h5">Бюджетные компьютеры</h3>
+                    <p>Недорогие, но надежные и функциональные модели для повседневных задач.</p>
+                    <a href="{% url 'CheapComp'%}" class="btn btn-primary">Выбрать</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 text-center">
+            <div class="card shadow-sm mb-4 bg-white rounded">
+                <div class="card-body">
+                    <h3 class="h5">Средние компьютеры</h3>
+                    <p>Сбалансированные по цене и качеству модели для различных задач.</p>
+                    <a href="{% url 'AvgComp'%}" class="btn btn-primary">Выбрать</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3 text-center">
+            <div class="card shadow-sm mb-4 bg-white rounded">
+                <div class="card-body">
+                    <h3 class="h5">Дорогие компьютеры</h3>
+                    <p>Мощные и производительные модели для требовательных задач.</p>
+                    <a href="{% url 'ExpComp'%}" class="btn btn-primary">Выбрать</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

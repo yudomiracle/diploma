@@ -2,14 +2,22 @@
 {% load bootstrap4 %}
 
 {% block content %}
-
+  <div class="container mt-5">
     {% if update_text %}
+      <div class="alert alert-info" role="alert">
         <p>Вы {{ action }} запись {{ model }} с ключом {{ object.pk }}</p>
+      </div>
     {% endif %}
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% bootstrap_form form %}
-        <button type="submit">Submit</button>
-    </form>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {% bootstrap_form form layout='vertical' %}
+          <button type="submit" class="btn btn-primary mt-3">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
 {% endblock %}
+
 

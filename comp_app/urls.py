@@ -3,7 +3,9 @@ from django.conf.urls.static import static
 from django.urls import path
 from . import views
 urlpatterns = [
-    path('', views.ComputerListView.as_view(), name='CompList'),
+    path('cheap/', views.CheapComputerListView.as_view(), name='CheapComp'),
+    path('avg/', views.AverageComputerListView.as_view(), name='AvgComp'),
+    path('exp/', views.ExpensiveComputerListView.as_view(), name='ExpComp'),
     path('<int:pk>/', views.ComputerDetail.as_view(), name='CompDetail'),
     path('create/', views.ComputerCreate.as_view(), name='CompCreate'),
     path('update/<int:pk>', views.ComputerUpdate.as_view(), name='CompUpdate'),

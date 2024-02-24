@@ -32,11 +32,4 @@ class CustomUser(AbstractUser):
         related_name='custom_user_permissions',
     )
 
-class Order(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
-    products = models.ManyToManyField(Computer)
-    quantity = models.PositiveIntegerField()
-    total_price = models.DecimalField(max_digits=10, decimal_places=2)
-    date = models.DateTimeField(auto_now_add=True)
-    shipping_address = models.TextField()
 
