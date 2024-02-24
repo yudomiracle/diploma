@@ -1,0 +1,11 @@
+{% extends 'navbar.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+{% for cart_item in cart_items %}
+    <div>
+        <p>Product: {{ cart_item.product.title }}</p>
+        <p>Price: {{ cart_item.product.price }} </p>
+    </div>
+{% endfor %}
+{% endblock %}

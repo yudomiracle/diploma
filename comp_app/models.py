@@ -32,4 +32,7 @@ class CustomUser(AbstractUser):
         related_name='custom_user_permissions',
     )
 
+class Cart(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    product = models.ForeignKey(Computer, on_delete=models.CASCADE)
 

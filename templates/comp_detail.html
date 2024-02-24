@@ -3,9 +3,13 @@
 
 {% block content %}
 
-{{ computer.title }}<br>
-{{ computer.info }}<br>
-{{ computer.price }}<br>
-<img src="{{computer.image.url}}" alt="">
+<h1>{{ computer.title }}</h1>
+  <p>{{ computer.info }}</p>
+  <p>Цена: {{ computer.price }}</p>
+  <img src="{{ computer.image.url }}" alt="{{ computer.title }}">
 
+  <form action="{% url 'add_to_cart' computer.pk %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Добавить в корзину</button>
+  </form>
 {% endblock %}

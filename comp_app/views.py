@@ -7,7 +7,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 
-from .models import Computer, Order, CustomUser
+from .models import Computer, CustomUser, Cart
 from . import forms
 from .utils import calculate_total_price
 
@@ -70,47 +70,20 @@ def MainPage(request):
     return render(request, 'main_page.html')
 
 
-class OrderList(LoginRequiredMixin, ListView):
-    model = Order
-    template_name = 'order_list.html'
-    context_object_name = 'orders'
+def add_to_cart(request, product_id):
+    if request.method == 'POST':
+        cart_item = Cart(user=request.user, product_id=product_id)
+        cart_item.save()
+        return redirect('cart')
 
-    def get_queryset(self):
-        return Order.objects.filter(user=self.request.user)
+@login_required
+def cart(request):
+    cart_items = Cart.objects.filter(user=request.user)
+    return render(request, 'cart.html', {'cart_items': cart_items})
 
-class OrderDetail(DetailView):
-    model = Order
-    context_object_name = 'order'
-    template_name = 'order_detail.html'
-
-
-from django.shortcuts import redirect
-
-
-class OrderCreate(CreateView):
-    model = Order
-    template_name = 'form.html'
-    form_class = forms.OrderForm
-
-    def get_success_url(self):
-        return reverse_lazy('order_detail', kwargs={'pk': self.object.pk})
-
-    def form_valid(self, form):
-        if self.request.user.is_authenticated:
-            form.instance.user = self.request.user
-            products = form.cleaned_data['products']
-            quantity = form.cleaned_data['quantity']
-            total_price = calculate_total_price(products, [quantity])
-            form.instance.total_price = total_price
-            return super().form_valid(form)
-        else:
-            return redirect('user_login')
-
-@method_decorator(user_passes_test(lambda u: u.is_staff), name='dispatch')
-class OrderDelete(DeleteView):
-    model = Order
-    template_name = 'form.html'
-    success_url = reverse_lazy('order_list')
-
+def remove_from_cart(request, cart_item_id):
+    cart_item = Cart.objects.get(id=cart_item_id)
+    cart_item.delete()
+    return redirect('cart')
 
 

@@ -11,9 +11,8 @@ urlpatterns = [
     path('update/<int:pk>', views.ComputerUpdate.as_view(), name='CompUpdate'),
     path('delete/<int:pk>', views.ComputerDelete.as_view(), name='CompDelete'),
 
-    path('orders/', views.OrderList.as_view(), name='order_list'),
-    path('orders/<int:pk>/', views.OrderDetail.as_view(), name='order_detail'),
-    path('orders/create/', views.OrderCreate.as_view(), name='order_create'),
-    path('orders/delete/<int:pk>', views.OrderDelete.as_view(), name='order_delete')
+    path('add_to_cart/<int:product_id>/', views.add_to_cart, name='add_to_cart'),
+    path('cart/', views.cart, name='cart'),
+    path('remove_from_cart/<int:cart_item_id>/', views.remove_from_cart, name='remove_from_cart'),
 ]
 
