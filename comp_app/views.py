@@ -69,21 +69,37 @@ class ComputerDelete(DeleteView):
 def MainPage(request):
     return render(request, 'main_page.html')
 
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Cart
 
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from .models import Cart
+
+@login_required
 def add_to_cart(request, product_id):
     if request.method == 'POST':
-        cart_item = Cart(user=request.user, product_id=product_id)
+        if request.user.is_staff:
+            cart_item = Cart(user=None, product_id=product_id)
+        else:
+            cart_item = Cart(user=request.user, product_id=product_id)
         cart_item.save()
         return redirect('cart')
 
 @login_required
 def cart(request):
-    cart_items = Cart.objects.filter(user=request.user)
+    if request.user.is_staff:
+        cart_items = Cart.objects.all()
+    else:
+        cart_items = Cart.objects.filter(user=request.user)
     return render(request, 'cart.html', {'cart_items': cart_items})
 
+@login_required
 def remove_from_cart(request, cart_item_id):
     cart_item = Cart.objects.get(id=cart_item_id)
     cart_item.delete()
     return redirect('cart')
+
 
 

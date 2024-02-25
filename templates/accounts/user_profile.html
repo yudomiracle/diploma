@@ -1,17 +1,31 @@
 {% extends 'navbar.html' %}
 {% load bootstrap4 %}
 
+{% block title %} профиль {% endblock %}
 {% block content %}
-
-{% if user.is_authenticated %}
-<h1> Ваш Профиль </h1>
-    <p>Username: {{ user.username }}</p>
-    <p>Email: {{ user.email }}</p>
-    <p>Phone Number: {{ user.phone_number }}</p>
-    <p>Shipping Address: {{ user.shipping_address }}</p>
-    <a href="{% url 'change_password' %}"> Поменять пароль </a><br>
-    <a href="{%url 'logout'%}"> Выйти из аккаунта </a>
-{% else %}
-    <a href="{% url 'user_login' %}">Вам нужно войти в сеть</a>
-{% endif %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow p-4 mb-4 bg-white rounded">
+                {% if user.is_authenticated %}
+                    <h1 class="text-center mb-4">Ваш Профиль</h1>
+                    <p><strong>Username:</strong> {{ user.username }}</p>
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Phone Number:</strong> {{ user.phone_number }}</p>
+                    <p><strong>Shipping Address:</strong> {{ user.shipping_address }}</p>
+                    <div class="text-center">
+                        <a href="{% url 'change_password' %}" class="btn btn-primary">Поменять пароль</a>
+                        <a href="{% url 'logout' %}" class="btn btn-danger">Выйти из аккаунта</a>
+                    </div>
+                {% else %}
+                    <p class="lead text-center">Вам нужно войти в сеть</p>
+                    <div class="text-center">
+                        <a href="{% url 'user_login' %}" class="btn btn-primary">Войти</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
 {% endblock %}

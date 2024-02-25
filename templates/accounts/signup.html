@@ -1,14 +1,25 @@
 {% extends 'navbar.html' %}
 {% load bootstrap4 %}
 
+{% block title %} страница регистраций {% endblock %}
 {% block content %}
-{% if user.is_authenticated %}
-  <p>Вы уже в сети</p>
-{% else %}
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">Зарегестрироваться</button>
-  </form>
-{% endif %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6">
+            <div class="card shadow p-4 mb-4 bg-white rounded">
+                {% if user.is_authenticated %}
+                    <p class="lead text-center">Вы уже в сети</p>
+                {% else %}
+                    <h2 class="text-center mb-4">Регистрация</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'footer.html' %}
 {% endblock %}

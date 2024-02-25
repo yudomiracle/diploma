@@ -33,6 +33,10 @@ class CustomUser(AbstractUser):
     )
 
 class Cart(models.Model):
-    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    STATUS_CHOICES = (
+        ('general', 'General'),
+        ('staff', 'Staff'),
+    )
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, null=True, blank=True)
     product = models.ForeignKey(Computer, on_delete=models.CASCADE)
-
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES)

@@ -13,7 +13,7 @@ from django.core.mail import send_mail
 from django.contrib.auth.tokens import default_token_generator
 from django.views.generic.edit import CreateView
 from django.urls import reverse_lazy
-from .forms import SignUpForm
+from .forms import SignUpForm, CustomPasswordChangeForm
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth.tokens import default_token_generator
@@ -45,6 +45,7 @@ def UserLogoutView(request):
 class UserPasswordChangeView(PasswordChangeView):
     template_name = 'accounts/change_password.html'
     extra_context = {}
+    form_class = CustomPasswordChangeForm
 
 class UserPasswordChangeDoneView(PasswordChangeDoneView):
     template_name = 'accounts/password_change_done.html'

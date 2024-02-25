@@ -1,23 +1,31 @@
 {% extends 'navbar.html' %}
 {% load bootstrap4 %}
 
+{% block title %} формы {% endblock %}
 {% block content %}
-  <div class="container mt-5">
-    {% if update_text %}
-      <div class="alert alert-info" role="alert">
-        <p>Вы {{ action }} запись {{ model }} с ключом {{ object.pk }}</p>
-      </div>
-    {% endif %}
-    <div class="row justify-content-center">
-      <div class="col-md-6">
-        <form method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {% bootstrap_form form layout='vertical' %}
-          <button type="submit" class="btn btn-primary mt-3">Submit</button>
-        </form>
+<div class="container mt-5">
+  {% if update_text %}
+  <div class="alert alert-info" role="alert">
+    <p>Вы {{ action }} запись {{ model }} с ключом {{ object.pk }}</p>
+  </div>
+  {% endif %}
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Update Form</h5>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% bootstrap_form form layout='vertical' %}
+            <button type="submit" class="btn btn-primary mt-3">Submit</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
+</div>
+{% include 'footer.html' %}
 {% endblock %}
+
 
 

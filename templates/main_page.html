@@ -1,6 +1,7 @@
 {% extends 'navbar.html' %}
 {% load bootstrap4 %}
 
+{% block title %} главная страница {% endblock %}
 {% block content %}
 <div class="container mt-5">
     <div class="row justify-content-center">
@@ -26,12 +27,8 @@
                         <i class="bi bi-check-circle-fill text-success me-2"></i>
                         <strong>Профессиональные консультации:</strong> Наши эксперты всегда готовы помочь вам с выбором.
                     </li>
-                    <li class="mb-3">
-                        <i class="bi bi-check-circle-fill text-success me-2"></i>
-                        <strong>Удобство покупки:</strong> Мы делаем покупку компьютера легкой и удобной.
-                    </li>
                 </ul>
-                <p>Не упустите возможность обновить свой компьютерный парк с нами! Перейдите к выбору компьютеров прямо сейчас и обретите новый уровень комфорта и эффективности в вашей работе и развлечениях.</p>
+                <p>Не упустите возможность обновить свой компьютерный парк с нами! Перейдите к выбору компьютеров сейчас и обретите новый уровень комфорта в вашей работе и развлечениях.</p>
             </div>
         </div>
     </div>
@@ -65,4 +62,5 @@
         </div>
     </div>
 </div>
+{% include 'footer.html' %}
 {% endblock %}
